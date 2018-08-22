@@ -2,7 +2,11 @@ import React, {
     Component
 } from 'react';
 
-//* CLASS Component
+//* Internal component state (local state)
+//* allows you to save, modify and delete properties
+//* that are stored in your component. The ES6 class
+//* component can use a constructor to initialize internal component state later on. The constructor is called only once when the component initializes. 
+
 class SearchBar extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +28,10 @@ class SearchBar extends Component {
     render() {
         return ( 
         <div >
-            <input onChange = {
+            <input 
+            //* Set the state value (input search term)
+            value = { this.state.term }
+            onChange = {
                 (event) =>
                 this.setState // << Update state here
                 ({ term: event.target.value })}/>
