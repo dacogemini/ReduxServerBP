@@ -1,11 +1,10 @@
-import React, {
-    Component
-} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/searchbar';
+import VideoList from './components/videolist';
 
-//* Sign up for Youtube API key
+//* Youtube API key
 const API_KEY = 'AIzaSyCn0i9Pa1Q6Irb9rwCMCGD0mRyR457SZz4';
 
 //* Class based component
@@ -14,7 +13,7 @@ class App extends Component {
     //? * The constructor is called only once, when the component initializes.
     constructor(props) {
         super(props);
-        //! Bind the state to the App class with this.state = {...}
+        //* Bind the state to the App class with this.state = {...}
         this.state = { videos: [] };
         YTSearch({key: API_KEY, term: 'Hapkido'},
         (videos) => {
@@ -24,7 +23,10 @@ class App extends Component {
         }
     }
     render() {
-        return ( <div><SearchBar /></div>
+        return ( <div>
+        <SearchBar />
+        <VideoList videos = { this.state.videos }/>
+        </div>
         )
     }
 }
